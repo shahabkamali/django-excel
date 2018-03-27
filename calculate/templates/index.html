@@ -25,19 +25,84 @@
                     <li><a href="#sheet2">Sheet 2</a></li>
                     <li><a href="#sheet3">Sheet 3</a></li>
             </ul>
+            <div class="header-formula">
+                <span class="selected-cell">A2</span>
+                <span class="formula">
+                    f(x): <input type="text" id="formula" name="formula">
+                    <button type="button" class="btn btn-info">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </span>
+            </div>
             <div class="tab-content">
                 <div id="sheet1" class="tab-pane fade">
                     <h3>sheet 1</h3>
-                    {{ sheet1_inputs |safe }}
-
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          {% for col in cols%}
+                              <th scope="col">{{ col }}</th>
+                          {% endfor %}
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for r in rows%}
+                          <tr>
+                             <td>{{r}}</td>
+                             {% for col in cols%}
+                              <td><input type="text" id="sheet1-{{col}}-{{r}}" name="cell-sheet1-{{col}}-{{r}}" value=""></td>
+                             {% endfor %}
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                    </table>
                 </div>
                 <div id="sheet2" class="tab-pane fade">
-                    <h3>sheet 2</h3>
-                    {{ sheet2_inputs |safe }}
+                    <h3>sheet 1</h3>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          {% for col in cols%}
+                              <th scope="col">{{ col }}</th>
+                          {% endfor %}
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for r in rows%}
+                          <tr>
+                             <td>{{r}}</td>
+                             {% for col in cols%}
+                              <td><input type="text" id="sheet2-{{col}}-{{r}}" name="cell-sheet2-{{col}}-{{r}}" value=""></td>
+                             {% endfor %}
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                    </table>
                 </div>
                 <div id="sheet3" class="tab-pane fade">
-                    <h3>sheet 3</h3>
-                    {{ sheet3_inputs |safe }}
+                    <h3>sheet 1</h3>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          {% for col in cols%}
+                              <th scope="col">{{ col }}</th>
+                          {% endfor %}
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for r in rows%}
+                          <tr>
+                             <td>{{r}}</td>
+                             {% for col in cols%}
+                              <td><input type="text" id="sheet3-{{col}}-{{r}}" name="cell-sheet3-{{col}}-{{r}}" value=""></td>
+                             {% endfor %}
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                    </table>
                 </div>
             </div>
             <br>

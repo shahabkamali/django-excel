@@ -23,32 +23,37 @@ from .models import Sheet
 def generate_sheets():
     sheet = Sheet.objects.get(id=1)
     sheet_parameters = sheet.get_sheet_parameters()
-    print (sheet_parameters)
-    html_input_string_sheet1 = ""
-    for i in range(1, 81):
-        if "A%s" % i in sheet_parameters:
-            html_input_string_sheet1 += "<input type='text' id='A%s' name='input_A%s' placeholder='%s' data-formula='%s'>" % (i, i, sheet_parameters["A%s" % i], sheet_parameters["A%s" % i])
-        else:
-            html_input_string_sheet1 += "<input type='text' id='A%s' name='input_A%s'  placeholder='A%s'>" % (i, i, i)
 
-    html_input_string_sheet2 = ""
-    for i in range(1, 81):
-        if "B%s" % i in sheet_parameters:
-            html_input_string_sheet2 += "<input type='text' id='B%s' name='input_B%s' placeholder='%s' data-formula='%s'>" % (i, i, sheet_parameters["B%s" % i], sheet_parameters["B%s" % i])
-        else:
-            html_input_string_sheet2 += "<input type='text' id='B%s' name='input_B%s'  placeholder='B%s'>" % (i, i, i)
+    cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
-    html_input_string_sheet3 = ""
-    for i in range(1, 81):
-        if "C%s" % i in sheet_parameters:
-            html_input_string_sheet3 += "<input type='text' id='C%s' name='input_C%s' placeholder='%s' data-formula='%s'>" % (i, i, sheet_parameters["C%s" % i], sheet_parameters["C%s" % i])
-        else:
-            html_input_string_sheet3 += "<input type='text' id='C%s' name='input_C%s'  placeholder='C%s'>" % (i, i, i)
+    rows = range(1, 81)
+    # html_input_string_sheet1 = ""
+    # for i in range(1, 81):
+    #     if "A%s" % i in sheet_parameters:
+    #         html_input_string_sheet1 += "<input type='text' id='A%s' name='input_A%s' placeholder='%s' data-formula='%s'>" % (i, i, sheet_parameters["A%s" % i], sheet_parameters["A%s" % i])
+    #     else:
+    #         html_input_string_sheet1 += "<input type='text' id='A%s' name='input_A%s'  placeholder='A%s'>" % (i, i, i)
+    #
+    # html_input_string_sheet2 = ""
+    # for i in range(1, 81):
+    #     if "B%s" % i in sheet_parameters:
+    #         html_input_string_sheet2 += "<input type='text' id='B%s' name='input_B%s' placeholder='%s' data-formula='%s'>" % (i, i, sheet_parameters["B%s" % i], sheet_parameters["B%s" % i])
+    #     else:
+    #         html_input_string_sheet2 += "<input type='text' id='B%s' name='input_B%s'  placeholder='B%s'>" % (i, i, i)
+    #
+    # html_input_string_sheet3 = ""
+    # for i in range(1, 81):
+    #     if "C%s" % i in sheet_parameters:
+    #         html_input_string_sheet3 += "<input type='text' id='C%s' name='input_C%s' placeholder='%s' data-formula='%s'>" % (i, i, sheet_parameters["C%s" % i], sheet_parameters["C%s" % i])
+    #     else:
+    #         html_input_string_sheet3 += "<input type='text' id='C%s' name='input_C%s'  placeholder='C%s'>" % (i, i, i)
 
     sheets = {}
-    sheets['sheet1_inputs'] = html_input_string_sheet1
-    sheets['sheet2_inputs'] = html_input_string_sheet2
-    sheets['sheet3_inputs'] = html_input_string_sheet3
+    sheets ['cols'] = cols
+    sheets['rows'] = rows
+    # sheets['sheet1_inputs'] = html_input_string_sheet1
+    # sheets['sheet2_inputs'] = html_input_string_sheet2
+    # sheets['sheet3_inputs'] = html_input_string_sheet3
     return sheets
 
 
