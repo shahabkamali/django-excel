@@ -12,8 +12,6 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    
     <link rel="stylesheet" href="{% static "calculate/css/mycss.css" %}">
 </head>
 <body {% if is_admin == True %} class="admin" {% else %} class="index" {% endif %}>
@@ -25,15 +23,6 @@
                     <li><a href="#sheet2">Sheet 2</a></li>
                     <li><a href="#sheet3">Sheet 3</a></li>
             </ul>
-            <div class="header-formula">
-                <span class="selected-cell">A2</span>
-                <span class="formula">
-                    f(x): <input type="text" id="formula" name="formula">
-                    <button type="button" class="btn btn-info">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </button>
-                </span>
-            </div>
             <div class="tab-content">
                 <div id="sheet1" class="tab-pane fade">
                     <h3>sheet 1</h3>
@@ -51,7 +40,7 @@
                           <tr>
                              <td>{{r}}</td>
                              {% for col in cols%}
-                              <td><input type="text" id="sheet1-{{col}}-{{r}}" name="cell-sheet1-{{col}}-{{r}}" value=""></td>
+                                <td><input type="text" id="sheet1-{{col}}-{{r}}" name="cell-sheet1-{{col}}-{{r}}" data-cell="sheet1 {{col}}{{r}}" value="{%my_tag col r 'sheet1' sheets %}"></td>
                              {% endfor %}
                           </tr>
                           {% endfor %}
@@ -74,7 +63,7 @@
                           <tr>
                              <td>{{r}}</td>
                              {% for col in cols%}
-                              <td><input type="text" id="sheet2-{{col}}-{{r}}" name="cell-sheet2-{{col}}-{{r}}" value=""></td>
+                              <td><input type="text" id="sheet2-{{col}}-{{r}}" name="cell-sheet2-{{col}}-{{r}}"  data-cell="sheet2 {{col}}{{r}}" value="{%my_tag col r 'sheet2' sheets %}"></td>
                              {% endfor %}
                           </tr>
                           {% endfor %}
@@ -97,7 +86,7 @@
                           <tr>
                              <td>{{r}}</td>
                              {% for col in cols%}
-                              <td><input type="text" id="sheet3-{{col}}-{{r}}" name="cell-sheet3-{{col}}-{{r}}" value=""></td>
+                              <td><input type="text" id="sheet3-{{col}}-{{r}}" name="cell-sheet3-{{col}}-{{r}}" data-cell="sheet3 {{col}}{{r}}" value="{%my_tag col r 'sheet3' sheets %}"></td>
                              {% endfor %}
                           </tr>
                           {% endfor %}
