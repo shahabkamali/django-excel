@@ -14,7 +14,7 @@ def get_item(dictionary, col,row):
     return dictionary.get('%s%s' % (col, row))
 
 @register.simple_tag
-def my_tag(col,row,sheet, dict):
+def my_tag(col, row, sheet, dict):
     key = '%s_%s%s' % (sheet, col, row)
 
     if key in dict:
@@ -55,7 +55,11 @@ def admin(request):
                 col = key.split('-')[2]
                 row = key.split('-')[3]
                 if request.POST[key]:
-                    cells_dict['%s_%s%s' % (sheet,col, row)] = request.POST[key]
+                    if request.POST[key].startswith('='):
+                        type = 'formula'
+                    else:
+                        type = 'value'
+                    cells_dict['%s_%s%s' % (sheet, col, row)] = {'value': request.POST[key], 'type': type}
         sheet = Sheet.objects.get(id=1)
         sheet.set_sheet_parameters(cells_dict)
         return redirect('/calculation/admin')

@@ -37,10 +37,21 @@
                       </thead>
                       <tbody>
                       {% for r in rows%}
-                          <tr>
+                          <tr class='sheet1'>
                              <td>{{r}}</td>
                              {% for col in cols%}
-                                <td><input type="text" id="sheet1-{{col}}-{{r}}" name="cell-sheet1-{{col}}-{{r}}" data-cell="sheet1 {{col}}{{r}}" value="{%my_tag col r 'sheet1' sheets %}"></td>
+                                {%my_tag col r 'sheet1' sheets as my_dict %}
+                                <td><input type="text" id="{{col}}{{r}}"
+                                        name="cell-sheet1-{{col}}-{{r}}"
+                                        data-cell="sheet1 {{col}}{{r}}"
+                                        data-sheet="sheet1" 
+                                        {% if my_dict.type == 'formula' %}
+                                            data-formula = '{{ my_dict.value | slice:"1:" }}'
+                                            placeholder="{{ my_dict.value }}"
+                                        {% else %}
+                                            value="{{my_dict.value}}"
+                                        {% endif %}>
+                                </td>
                              {% endfor %}
                           </tr>
                           {% endfor %}
@@ -59,15 +70,27 @@
                         </tr>
                       </thead>
                       <tbody>
-                      {% for r in rows%}
-                          <tr>
-                             <td>{{r}}</td>
-                             {% for col in cols%}
-                              <td><input type="text" id="sheet2-{{col}}-{{r}}" name="cell-sheet2-{{col}}-{{r}}"  data-cell="sheet2 {{col}}{{r}}" value="{%my_tag col r 'sheet2' sheets %}"></td>
-                             {% endfor %}
-                          </tr>
-                          {% endfor %}
-                      </tbody>
+                        <tbody>
+                            {% for r in rows%}
+                                <tr>
+                                   <td>{{r}}</td>
+                                   {% for col in cols%}
+                                      {%my_tag col r 'sheet2' sheets as my_dict %}
+                                      <td><input type="text" id="sheet2_{{col}}{{r}}"
+                                              name="cell-sheet2-{{col}}-{{r}}"
+                                              data-cell="sheet2 {{col}}{{r}}"
+                                              data-sheet="sheet2" 
+                                              {% if my_dict.type == 'formula' %}
+                                                  data-formula = '{{ my_dict.value | slice:"1:" }}'
+                                                  placeholder="{{ my_dict.value }}"
+                                              {% else %}
+                                                  value="{{my_dict.value}}"
+                                              {% endif %}>
+                                      </td>
+                                   {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
                     </table>
                 </div>
                 <div id="sheet3" class="tab-pane fade">
@@ -82,15 +105,26 @@
                         </tr>
                       </thead>
                       <tbody>
-                      {% for r in rows%}
-                          <tr>
-                             <td>{{r}}</td>
-                             {% for col in cols%}
-                              <td><input type="text" id="sheet3-{{col}}-{{r}}" name="cell-sheet3-{{col}}-{{r}}" data-cell="sheet3 {{col}}{{r}}" value="{%my_tag col r 'sheet3' sheets %}"></td>
-                             {% endfor %}
-                          </tr>
-                          {% endfor %}
-                      </tbody>
+                        {% for r in rows%}
+                            <tr>
+                               <td>{{r}}</td>
+                               {% for col in cols%}
+                                  {%my_tag col r 'sheet3' sheets as my_dict %}
+                                  <td><input type="text" id="sheet3_{{col}}{{r}}"
+                                          name="cell-sheet3-{{col}}-{{r}}"
+                                          data-cell="sheet3 {{col}}{{r}}"
+                                          data-sheet="sheet3" 
+                                          {% if my_dict.type == 'formula' %}
+                                              data-formula = '{{ my_dict.value | slice:"1:" }}'
+                                              placeholder="{{ my_dict.value }}"
+                                          {% else %}
+                                              value="{{my_dict.value}}"
+                                          {% endif %}>
+                                  </td>
+                               {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
                     </table>
                 </div>
             </div>

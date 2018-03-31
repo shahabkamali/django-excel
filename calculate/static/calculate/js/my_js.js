@@ -5,7 +5,7 @@ $( document ).ready(function() {
     });
 
     /// calculate formula
-    $('.index input').focusout(function(){
+    $('.index .sheet1 input').focusout(function(){
         $( "input[type='text']" ).each(function( index ) {
             eval($(this).attr('id') + " = parseFloat($('#"+ $(this).attr('id')+"').val());");
         });
@@ -13,7 +13,10 @@ $( document ).ready(function() {
         $( "input" ).each(function( index ) {
             //console.log( index + ": " + $( this ).text() );
             if ($(this).data('formula')){
-                $(this).val(eval($(this).data('formula')));
+                var formula = $(this).data('formula');
+                // formula = formula.replace("/^[A-Z]",'B');
+                // console.log(formula);
+                $(this).val(eval(formula));
             }
         });
     });
