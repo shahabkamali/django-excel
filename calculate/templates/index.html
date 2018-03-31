@@ -48,6 +48,9 @@
                                         {% if my_dict.type == 'formula' %}
                                             data-formula = '{{ my_dict.value | slice:"1:" }}'
                                             placeholder="{{ my_dict.value }}"
+                                            {% if is_admin == True %}
+                                                value="{{my_dict.value}}"
+                                            {% endif %}
                                         {% else %}
                                             value="{{my_dict.value}}"
                                         {% endif %}>

@@ -45,6 +45,8 @@ def index(request):
 def admin(request):
     if request.method == "GET":
         context = generate_sheets()
+        sheet = Sheet.objects.get(id=1)
+        context['sheets'] = sheet.get_sheet_parameters()
         context['is_admin'] = True
         return render(request, "index.html", context)
     else:
