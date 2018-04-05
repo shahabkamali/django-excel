@@ -55,8 +55,14 @@ $( document ).ready(function() {
         });
     }
     execution();
+    execution();
     /// calculate formula
     $('.index .sheet1 input').focusout(function(){
         execution();
     });
+
+    $('.index select').change(function(){
+        execution();
+    });
+
 });
