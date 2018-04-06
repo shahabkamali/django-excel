@@ -66,3 +66,8 @@ def admin(request):
         sheet.set_sheet_parameters(cells_dict)
         return redirect('/calculation/admin')
 
+
+def ret_json(request):
+    sheet = Sheet.objects.get(id=1)
+    json_sheet = sheet.get_sheet_parameters()
+    return JsonResponse(json_sheet)
