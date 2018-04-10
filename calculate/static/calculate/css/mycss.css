@@ -13,5 +13,14 @@
     padding: 15px;
 }
 
-.table input {display: block; padding: 0; margin: 0; border: 0; width: 100%;}
-.table td {margin: 0; padding: 0;}
+.table input {display: block; padding: 0; margin: 0; border: 0; width: 100%; font-size: 12px;}
+.table td {margin: 0; padding: 0 !important; }
+
+.table input{
+    height: 37px;
+}
+
+.table{
+    max_width: 2000px;
+    width: 2000px;
+}

@@ -12,7 +12,7 @@ var ret_dict = function(text_cells, value_cells){
             text_dict[$('#' + text_col + i ).val()] = $('#' + value_col + i ).val();
         }
     }
-    console.log(text_dict);
+    //console.log(text_dict);
     return text_dict;
 }
 
