@@ -7,7 +7,7 @@ var ret_dict = function(text_cells, value_cells){
     var text_col = text_cells[0][0];
     var value_col = value_cells[0][0];
     var text_dict = {};
-    for(i=i1; i<= i2; i++){
+    for(i=parseInt(i1); i<= parseInt(i2); i++){
         if ($('#' + text_col + i ).val()){
             text_dict[$('#' + text_col + i ).val()] = $('#' + value_col + i ).val();
         }
